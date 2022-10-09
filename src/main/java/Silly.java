@@ -80,9 +80,14 @@ public class Silly implements Comparable<Silly>{
      *       Make sure you document this method!
      */
 
-
-
-
+    /**
+     * Creates a new Silly Object.
+     * This constructor takes in two strings as an argument and sets this Silly instance's name as the concatenation.
+     *
+     * @param s1 a string to be a part of this Silly instance's name.
+     * @param s2 a string to be a part of this Silly instance's name.
+     */
+    public Silly(String s1, String s2){ this.name = s1 + s2; };
 
     public static void main(String[] args) {
         /**
@@ -116,7 +121,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +139,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -155,12 +161,9 @@ public class Silly implements Comparable<Silly>{
          */
         if (!(o instanceof Silly)){
             return false;
+        } else{
+            return ((Silly) o).name.equals(this.name);
         }
-
-        Silly other = (Silly) o; // To access .name of o, we need to cast it.
-
-        // Hint: to compare strings, we need to use .equals()
-        //       e.g. s1.equals(s2)
     }
 
     /**
@@ -194,16 +197,7 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        return this.name.length() - other.name.length();
     }
-
-    /*
-     * TODO (Task 6): Submit the changes you made on GitHub!
-     *                When you submit it, go to the 'Actions' tab. You should
-     *                be able to see this exercise being autograded!
-     *
-     *                You can click on the ongoing action to see more details.
-     *                If the tests don't pass, look at the results and revise
-     *                accordingly.
-     */
 }
 
